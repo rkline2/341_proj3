@@ -2,6 +2,7 @@
 #define SPLAY_TREE_H
 
 #include "dsexceptions.h"
+#include "Node.h"
 #include <iostream>        // For NULL
 using namespace std;
 
@@ -24,25 +25,29 @@ using namespace std;
 template <typename Comparable>
 class SplayTree
 {
-  public:
-    SplayTree( )
+public:
+    SplayTree()
     {
         nullNode = new BinaryNode;
         nullNode->left = nullNode->right = nullNode;
         root = nullNode;
+        m_numNodes = 0;
+        m_splayCount = 0;
     }
 
-    SplayTree( const SplayTree & rhs )
+    SplayTree(const SplayTree& rhs)
     {
         nullNode = new BinaryNode;
         nullNode->left = nullNode->right = nullNode;
         root = nullNode;
         *this = rhs;
+        m_numNodes = 1;
+        m_splayCount = 0;
     }
 
-    ~SplayTree( )
+    ~SplayTree()
     {
-        makeEmpty( );
+        makeEmpty();
         delete nullNode;
     }
 
@@ -54,17 +59,17 @@ class SplayTree
      *     smaller than any item in the tree, then call findMin.
      * Return the smallest item or throw UnderflowException if empty.
      */
-    const Comparable & findMin( )
+    const Comparable& findMin()
     {
-        if( isEmpty( ) )
-            throw UnderflowException( );
+        if (isEmpty())
+            throw UnderflowException();
 
-        BinaryNode *ptr = root;
+        BinaryNode* ptr = root;
 
-        while( ptr->left != nullNode )
+        while (ptr->left != nullNode)
             ptr = ptr->left;
 
-        splay( ptr->element, root );
+        splay(ptr->element, root);
         return ptr->element;
     }
 
@@ -76,75 +81,77 @@ class SplayTree
      *     larger than any item in the tree, then call findMax.
      * Return the largest item or throw UnderflowException if empty.
      */
-    const Comparable & findMax( )
+    const Comparable& findMax()
     {
-        if( isEmpty( ) )
-            throw UnderflowException( );
+        if (isEmpty())
+            throw UnderflowException();
 
-        BinaryNode *ptr = root;
+        BinaryNode* ptr = root;
 
-        while( ptr->right != nullNode )
+        while (ptr->right != nullNode)
             ptr = ptr->right;
 
-        splay( ptr->element, root );
+        splay(ptr->element, root);
         return ptr->element;
     }
 
 
-    bool contains( const Comparable & x )
+    bool contains(const Comparable& x)
     {
-        if( isEmpty( ) )
+        if (isEmpty())
             return false;
-        splay( x, root );
+        splay(x, root);
         return root->element == x;
     }
 
-    bool isEmpty( ) const
+    bool isEmpty() const
     {
         return root == nullNode;
     }
 
-    void printTree( ) const
+    void printTree() const
     {
-        if( isEmpty( ) )
+        if (isEmpty())
             cout << "Empty tree" << endl;
         else
-            printTree( root );
+            printTree(root);
     }
 
-    void makeEmpty( )
+    void makeEmpty()
     {
-    /******************************
-     * Comment this out, because it is prone to excessive
-     * recursion on degenerate trees. Use alternate algorithm.
-        
-        reclaimMemory( root );
-        root = nullNode;
-     *******************************/
-        while( !isEmpty( ) )
+        /******************************
+         * Comment this out, because it is prone to excessive
+         * recursion on degenerate trees. Use alternate algorithm.
+
+            reclaimMemory( root );
+            root = nullNode;
+         *******************************/
+        while (!isEmpty())
         {
-            findMax( );        // Splay max item to root
-            remove( root->element );
+            findMax();        // Splay max item to root
+            remove(root->element);
         }
     }
 
-    void insert( const Comparable & x )
+    void insert(const Comparable& x)
     {
-        static BinaryNode *newNode = NULL;
+        static BinaryNode* newNode = NULL;
 
-        if( newNode == NULL )
+        if (newNode == NULL) {
             newNode = new BinaryNode;
+            SetNumNodes(++m_numNodes);
+        }
         newNode->element = x;
 
-        if( root == nullNode )
+        if (root == nullNode)
         {
             newNode->left = newNode->right = nullNode;
             root = newNode;
         }
         else
         {
-            splay( x, root );
-            if( x < root->element )
+            splay(x, root);
+            if (x < root->element)
             {
                 newNode->left = root->left;
                 newNode->right = root;
@@ -152,119 +159,182 @@ class SplayTree
                 root = newNode;
             }
             else
-            if( root->element < x )
-            {
-                newNode->right = root->right;
-                newNode->left = root;
-                root->right = nullNode;
-                root = newNode;
-            }
-            else
-                return;
+                if (root->element < x)
+                {
+                    newNode->right = root->right;
+                    newNode->left = root;
+                    root->right = nullNode;
+                    root = newNode;
+                }
+                else
+                    return;
         }
         newNode = NULL;   // So next insert will call new
     }
 
-    void remove( const Comparable & x )
+    void remove(const Comparable& x)
     {
-        BinaryNode *newTree;
+        BinaryNode* newTree;
 
-            // If x is found, it will be at the root
-        if( !contains( x ) )
+        // If x is found, it will be at the root
+        if (!contains(x))
             return;   // Item not found; do nothing
 
-        if( root->left == nullNode )
+        if (root->left == nullNode)
             newTree = root->right;
         else
         {
             // Find the maximum in the left subtree
             // Splay it to the root; and then attach right child
             newTree = root->left;
-            splay( x, newTree );
+            splay(x, newTree);
             newTree->right = root->right;
         }
         delete root;
         root = newTree;
+        SetNumNodes(--m_numNodes);
     }
 
-    const SplayTree & operator=( const SplayTree & rhs )
+    const SplayTree& operator=(const SplayTree& rhs)
     {
-        if( this != &rhs )
+        if (this != &rhs)
         {
-            makeEmpty( );
-            root = clone( rhs.root );
+            makeEmpty();
+            root = clone(rhs.root);
         }
 
         return *this;
     }
+    /*****************************************EXTRA FUMCTIONS*****************************************/
+    void IncrementFreq(const Comparable& x) {
+        // Desired node will always be at the root of the tree 
+        root->element.IncrementFrequency();
+        nullNode->element.IncrementFrequency();
+    }
+
+    void PrintResults() {
+        if (m_numNodes != 0) {
+            cout << "This tree starts with Node [word=" << root->element.GetWord()
+                << ", frequency=" << root->element.GetFrequency() << "] and has " << m_numNodes << " nodes" << endl;
+        }
+        else { cout << "This tree has no Nodes" << endl; }
+    }
+
+    void FindAll(string val) {
+        FindAll(root, val);
+    }
+
+    void ExportAll(string val, ofstream& file) {
+        ExportAll(root, val, file);
+    }
+
+    int GetNumNodes() { return m_numNodes; }
+
+    int GetSplayCount() { return m_splayCount; }
+
+    void ExportResults(ofstream& file) {
+        if (m_numNodes != 0) {
+        file << "This tree starts with Node [word=" << root->element.GetWord()
+            << ", frequency=" << root->element.GetFrequency() << "] and has " << m_numNodes << " nodes" << endl;
+        }
+        else { file << "This tree has no Nodes" << endl; }
+
+    }
+
+    void ExportTree(ofstream& file) {
+        if (isEmpty()) {
+            file << "Empty tree" << endl;
+        }
+        else {
+            ExportTree(root, file);
+        }
+    }
+    /*****************************************EXTRA FUMCTIONS*****************************************/
+
 
 private:
     struct BinaryNode
     {
         Comparable  element;
-        BinaryNode *left;
-        BinaryNode *right;
+        BinaryNode* left;
+        BinaryNode* right;
 
-        BinaryNode( ) : left( NULL ), right( NULL ) { }
-        BinaryNode( const Comparable & theElement, BinaryNode *lt, BinaryNode *rt )
-            : element( theElement ), left( lt ), right( rt ) { }
+        BinaryNode() : left(NULL), right(NULL) { }
+        BinaryNode(const Comparable& theElement, BinaryNode* lt, BinaryNode* rt)
+            : element(theElement), left(lt), right(rt) { }
     };
 
-    BinaryNode *root;
-    BinaryNode *nullNode;
+    BinaryNode* root;
+    BinaryNode* nullNode;
+    int m_numNodes;
+    int m_splayCount;
 
     /**
      * Internal method to reclaim internal nodes in subtree t.
      * WARNING: This is prone to running out of stack space.
      */
-    void reclaimMemory( BinaryNode * t )
+    void reclaimMemory(BinaryNode* t)
     {
-        if( t != t->left )
+        if (t != t->left)
         {
-            reclaimMemory( t->left );
-            reclaimMemory( t->right );
+            reclaimMemory(t->left);
+            reclaimMemory(t->right);
             delete t;
         }
     }
-    
+
     /**
      * Internal method to print a subtree t in sorted order.
      * WARNING: This is prone to running out of stack space.
      */
-   void printTree( BinaryNode *t ) const
+    void printTree(BinaryNode* t) const
     {
-        if( t != t->left )
+        if (t != t->left)
         {
-            printTree( t->left );
+            printTree(t->left);
             cout << t->element << endl;
-            printTree( t->right );
+            printTree(t->right);
         }
     }
+
+    /************************EXTRA FUNCTION****************************/
+
+    void ExportTree(BinaryNode* t, ofstream& file) const {
+        
+        if (t != t->left) {
+            ExportTree(t->left, file);
+            file << t->element << endl;
+            ExportTree(t->right, file);
+        }
+    }
+
+    /************************EXTRA FUNCTION****************************/
+
 
     /**
      * Internal method to clone subtree.
      * WARNING: This is prone to running out of stack space.
      */
-    BinaryNode * clone( BinaryNode * t ) const
+    BinaryNode* clone(BinaryNode* t) const
     {
-        if( t == t->left )  // Cannot test against nullNode!!!
+        if (t == t->left)  // Cannot test against nullNode!!!
             return nullNode;
         else
-            return new BinaryNode( t->element, clone( t->left ), clone( t->right ) );
+            return new BinaryNode(t->element, clone(t->left), clone(t->right));
     }
 
-        // Tree manipulations
-    void rotateWithLeftChild( BinaryNode * & k2 )
+    // Tree manipulations
+    void rotateWithLeftChild(BinaryNode*& k2)
     {
-        BinaryNode *k1 = k2->left;
+        BinaryNode* k1 = k2->left;
         k2->left = k1->right;
         k1->right = k2;
         k2 = k1;
     }
 
-    void rotateWithRightChild( BinaryNode * & k1 )
+    void rotateWithRightChild(BinaryNode*& k1)
     {
-        BinaryNode *k2 = k1->right;
+        BinaryNode* k2 = k1->right;
         k1->right = k2->left;
         k2->left = k1;
         k1 = k2;
@@ -279,33 +349,33 @@ private:
      * x is the target item to splay around.
      * t is the root of the subtree to splay.
      */
-    void splay( const Comparable & x, BinaryNode * & t )
+    void splay(const Comparable& x, BinaryNode*& t)
     {
-        BinaryNode *leftTreeMax, *rightTreeMin;
+        BinaryNode* leftTreeMax, * rightTreeMin;
         static BinaryNode header;
 
         header.left = header.right = nullNode;
         leftTreeMax = rightTreeMin = &header;
 
         nullNode->element = x;   // Guarantee a match
-
-        for( ; ; )
-            if( x < t->element )
+        SetSplayCount(++m_splayCount);
+        for (; ; )
+            if (x < t->element)
             {
-                if( x < t->left->element )
-                    rotateWithLeftChild( t );
-                if( t->left == nullNode )
+                if (x < t->left->element)
+                    rotateWithLeftChild(t);
+                if (t->left == nullNode)
                     break;
                 // Link Right
                 rightTreeMin->left = t;
                 rightTreeMin = t;
                 t = t->left;
             }
-            else if( t->element < x )
+            else if (t->element < x)
             {
-                if( t->right->element < x )
-                    rotateWithRightChild( t );
-                if( t->right == nullNode )
+                if (t->right->element < x)
+                    rotateWithRightChild(t);
+                if (t->right == nullNode)
                     break;
                 // Link Left
                 leftTreeMax->right = t;
@@ -320,6 +390,54 @@ private:
         t->left = header.right;
         t->right = header.left;
     }
+    /*************************EXTRA FUNCTIONS******************************/
+    
+    void SetNumNodes(int num) {
+        if (num >= 0) {
+            m_numNodes = num;
+        }
+    }
+
+
+    void SetSplayCount(int num){
+        if (num >= 0) {
+            m_splayCount = num;
+        }
+    }
+    void FindAll(BinaryNode*& t, string val) {
+        if (t != t->left) {
+            FindAll(t->left, val);
+            if (IsSimilar(t, val)) {
+                cout << t->element << endl;
+            }
+            FindAll(t->right, val);
+        }
+    }
+
+    void ExportAll(BinaryNode*& t, string val, ofstream& file) {
+        if (t != t->left) {
+            ExportAll(t->left, val, file);
+            if (IsSimilar(t, val)) {
+                file << t->element << endl;
+            }
+            ExportAll(t->right, val, file);
+        }
+    
+    }
+
+    bool IsSimilar(BinaryNode*& t, string val) {
+        string wordcpy = t->element.GetWord(); const int VAL_SIZE = val.size();
+
+        // only runs for the values less than or equal to the element's word 
+        if (VAL_SIZE <= wordcpy.size()) {
+            for (int i = 0; i < VAL_SIZE; i++) {
+                if (tolower(wordcpy[i]) != tolower(val[i])) { return false; }
+            }
+            return true;
+        }
+        return false;
+    }
+    /*************************EXTRA FUNCTIONS******************************/
 };
 
 #endif

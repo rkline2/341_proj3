@@ -1,7 +1,7 @@
 /**************************************************************
  * File:    MyExceptions.h
  * Project: CMSC 341 - Project 3 - Word Freq Splay Tree
- * Author :
+ * Author : Rooklyn Kline
  * Date   : 16-July-2020
  * Section: Lecture-02
  * E-mail: rkline2@umbc.edu

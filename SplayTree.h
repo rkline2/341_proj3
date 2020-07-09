@@ -41,8 +41,8 @@ public:
         nullNode->left = nullNode->right = nullNode;
         root = nullNode;
         *this = rhs;
-        m_numNodes = 1;
-        m_splayCount = 0;
+        m_numNodes = rhs.m_numNodes;
+        m_splayCount = rhs.m_splayCount;
     }
 
     ~SplayTree()

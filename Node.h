@@ -1,10 +1,10 @@
 /**************************************************************
  * File:    Node.h
  * Project: CMSC 341 - Project 3 - Word Frequency
- * Author :
- * Date   : 04-November-2014
+ * Author : Rooklyn Kline
+ * Date   : 16-July-2020
  * Section: Lecture-02
- * E-mail:
+ * E-mail: rkline2@umbc.edu
  *
  * Node Class definition.
  *************************************************************/

@@ -1,10 +1,10 @@
 /**************************************************************
  * File:    Util.h
  * Project: CMSC 341 - Project 3 - Word Frequency
- * Author :
- * Date   : 04-November-2014
+ * Author : Rooklyn Kline
+ * Date   : 16-July-2020
  * Section: Lecture-02
- * E-mail:
+ * E-mail: rkline2@umbc.edu
  *
  * Util Class definition.
  *
@@ -23,10 +23,10 @@
 #include "SplayTree.h"
 
 
-const string EMPTY_STR = "", WORD_SP = " ", END_FILE_NAME = ".txt";
-const char APOST = '\'', QUOTE = '"', DASH = '-', DELIM = ' ';
-const int ASCII_MIN_CHAR = -1, ASCII_MAX_CHAR = 255, MIN_UPPER = 65, MAX_UPPER = 90;
-const int MAX_ESCAPE_SEQ = 33, DEL_ESCAPE_SEQ = 127;
+const string EMPTY_STR = "", WORD_SP = " ";												//<-|
+const char APOST = '\'', QUOTE = '"', DASH = '-', DELIM = ' ';							//  | Filtration conditions  
+const int ASCII_MIN_CHAR = -1, ASCII_MAX_CHAR = 255, MIN_UPPER = 65, MAX_UPPER = 90;	//  | and cases
+const int MAX_ESCAPE_SEQ = 33, DEL_ESCAPE_SEQ = 127;									//<-|
 
 class Util {
 

@@ -9,8 +9,6 @@
  * HashedSplays Class implementation.
  *
  *************************************************************/
-//#include <iostream>
-#include <sstream> // Input validation for this file only
 #include "HashedSplays.h"
 #include "Export.h"
 
@@ -18,7 +16,7 @@
 int main(int argc, char* argv[]) {
 	const string YES = "Y", NO = "N", OUTPUT1 = "MyOutput1.txt", OUTPUT2 = "MyOutput2.txt";
 	string usrResponce;
-	
+	cout << "*********Welcome to TestDriver.cpp*********" << endl;
 	// Test 1: testing given input1.txt
 	try {
 		cout << "Test 1: Testing input1.txt" << endl;
@@ -154,7 +152,6 @@ int main(int argc, char* argv[]) {
 	}
 
 	// End of tests
-	cout << "**********End of Tests**********" << endl;
 	usrResponce.clear();
 	while (usrResponce != YES && usrResponce != NO) {
 		cout << "Would you like to delete the two export files ('Y' or 'N' ): "; cin >> usrResponce;
@@ -174,7 +171,9 @@ int main(int argc, char* argv[]) {
 		}
 		cout << "All files removed" << endl;
 	}
+	cout << "\n*********End of Tests*********" << endl;
 	cout << "Run valgrind for any memory leaks" << endl;
 	
 	return 0;
 }
+

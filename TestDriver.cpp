@@ -135,15 +135,34 @@ int main(int argc, char* argv[]) {
 
 		// Implementation
 		wordFreq.PrintHashCountResults();
+
+		// PrintTree(int)
+		cout << "These values will be entered into PrintTree(int):" << endl;
+		for (int i = 0; i < digitCount; i++) { cout << digitList.at(i) << endl; }
+
+		cout << "Enter any value to continue: "; cin >> usrResponce; cin.clear(); cin.ignore(10000, '\n');
 		for (int i = 0; i < digitCount; i++) {
 			wordFreq.PrintTree(digitList.at(i));
 		}
+
+		// PrintTree (string)
+		cout << "These values will be entered into PrintTree(string):" << endl;
+		for (int i = 0; i < wordCount; i++) { cout << wordList.at(i) << endl; }
+
+		cout << "Enter any value to continue: "; cin >> usrResponce; cin.clear(); cin.ignore(10000, '\n');
 		for (int i = 0; i < wordCount; i++) {
 			wordFreq.PrintTree(wordList.at(i));
 		}
+
+		// FindAll(string)
+		cout << "These values will be entered into FindAll(string):" << endl;
+		for (int i = 0; i < findAllCount; i++) { cout << findAllList.at(i) << endl; }
+
+		cout << "Enter any value to continue: "; cin >> usrResponce; cin.clear(); cin.ignore(10000, '\n');
 		for (int i = 0; i < findAllCount; i++) {
 			wordFreq.FindAll(findAllList.at(i));
 		}
+		cout << "\nEnd of test 3" << endl;
 	}
 
 	catch (Exceptions& cException) {

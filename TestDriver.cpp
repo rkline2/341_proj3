@@ -76,7 +76,7 @@ int main(int argc, char* argv[]) {
 		vector<int> digitList; vector<string> wordList, findAllList;
 		
 		usrResponce.clear();
-		cout << "\nTest 3: Testing hash table length using any .txt file (display only)" << endl;
+		cout << "\nTest 3: Testing hash table length using the given .txt file (display only)" << endl;
 		while (usrResponce == EMPTY_STR) {
 			cout << "How long do you want the hash table: "; cin >> usrResponce; cin.clear(); cin.ignore(10000, '\n');
 			responceNum = usrResponce.length();
@@ -127,18 +127,18 @@ int main(int argc, char* argv[]) {
 		}
 
 		digitList.resize(digitCount); wordList.resize(wordCount); findAllList.resize(findAllCount);
-		cout << "The HashedSplay object will read from "<< argv[1] <<" and the object's functions will go as follow:\n";
-		cout << "1. PrintHashCountResults()\n2. PrintTree(int)\n3. PrintTree(string)\n4.FindAll(string)\n";
+		cout << "\nThe HashedSplay object will read from "<< argv[1] <<" and the object's functions will go as follow:\n";
+		cout << "1. PrintHashCountResults()\n2. PrintTree(int)\n3. PrintTree(string)\n4. FindAll(string)\n";
 		cout << "Enter any value to continue: "; cin >> usrResponce; cin.clear(); cin.ignore(10000, '\n');
 
 		HashedSplays wordFreq(indexNum);
 		wordFreq.FileReader(argv[1]);
 
-		// Implementation
+		// Implementations
 		wordFreq.PrintHashCountResults();
 
 		// PrintTree(int)
-		cout << "These values will be entered into PrintTree(int):" << endl;
+		cout << "\nThese values will be entered into PrintTree(int):" << endl;
 		for (int i = 0; i < digitCount; i++) { cout << digitList.at(i) << endl; }
 
 		cout << "Enter any value to continue: "; cin >> usrResponce; cin.clear(); cin.ignore(10000, '\n');
@@ -147,7 +147,7 @@ int main(int argc, char* argv[]) {
 		}
 
 		// PrintTree (string)
-		cout << "These values will be entered into PrintTree(string):" << endl;
+		cout << "\nThese values will be entered into PrintTree(string):" << endl;
 		for (int i = 0; i < wordCount; i++) { cout << wordList.at(i) << endl; }
 
 		cout << "Enter any value to continue: "; cin >> usrResponce; cin.clear(); cin.ignore(10000, '\n');
@@ -156,7 +156,7 @@ int main(int argc, char* argv[]) {
 		}
 
 		// FindAll(string)
-		cout << "These values will be entered into FindAll(string):" << endl;
+		cout << "\nThese values will be entered into FindAll(string):" << endl;
 		for (int i = 0; i < findAllCount; i++) { cout << findAllList.at(i) << endl; }
 
 		cout << "Enter any value to continue: "; cin >> usrResponce; cin.clear(); cin.ignore(10000, '\n');
@@ -174,7 +174,7 @@ int main(int argc, char* argv[]) {
 	// End of tests
 	usrResponce.clear();
 	while (usrResponce != YES && usrResponce != NO) {
-		cout << "Would you like to delete the two export files ('Y' or 'N' ): "; cin >> usrResponce;
+		cout << "Would you like to delete the two new export files ('Y' or 'N' ): "; cin >> usrResponce;
 		cin.clear(); cin.ignore(10000, '\n');
 		
 		if (islower(usrResponce[0])) { usrResponce[0] = toupper(usrResponce[0]); }

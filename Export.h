@@ -92,7 +92,8 @@ public:
 	// Pre-Conditions: m_file and m_ExportTable exists. Parameter is valid
 	// Post-Conditions: Exports a single splay tree from the table based on the given parameter
 	void ExportTree(int indexNum) {
-		if (indexNum >= 0 && indexNum <= m_ExportTable->size()) {
+		int tableSize = m_ExportTable->size();
+		if (indexNum >= 0 && indexNum <= tableSize) {
 			m_ExportTable->at(indexNum).ExportTree(m_file);
 			m_file << "This tree has " << m_ExportTable->at(indexNum).GetSplayCount() << " splays" << endl;
 		}

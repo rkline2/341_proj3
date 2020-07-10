@@ -95,7 +95,8 @@ int main(int argc, char* argv[]) {
 			cin >> usrResponce; cin.clear(); cin.ignore(10000, '\n');
 
 			if (usrResponce != STOP_DELIM) { 
-				for (int i = 0; i < usrResponce.size(); i++) {
+				int responceSize = usrResponce.size();
+				for (int i = 0; i < responceSize; i++) {
 					if (isdigit(usrResponce[i])) { currisDigit = true; }
 					else { currisWord = true; }
 

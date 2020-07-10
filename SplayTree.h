@@ -426,10 +426,11 @@ private:
     }
 
     bool IsSimilar(BinaryNode*& t, string val) {
-        string wordcpy = t->element.GetWord(); const int VAL_SIZE = val.size();
+        string wordcpy = t->element.GetWord(); 
+        const int VAL_SIZE = val.size(), WORD_SIZE = wordcpy.size();
 
         // only runs for the values less than or equal to the element's word 
-        if (VAL_SIZE <= wordcpy.size()) {
+        if (VAL_SIZE <= WORD_SIZE) {
             for (int i = 0; i < VAL_SIZE; i++) {
                 if (tolower(wordcpy[i]) != tolower(val[i])) { return false; }
             }

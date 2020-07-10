@@ -31,7 +31,7 @@ int HashedSplays::GetNumTrees() { return m_trees; }
 // FileReader 
 // Given a filename, reads the file per line  
 void HashedSplays::FileReader(string filename) {
-    Util helpUtil; ifstream file; string line;
+    Util helpUtil; ifstream file; string line; int lineSize;
 
     // checks if file exists
 	if (!helpUtil.FileExists(filename.c_str())) { throw Exceptions("Filename does not exist"); }
@@ -40,9 +40,9 @@ void HashedSplays::FileReader(string filename) {
     cout << "Building hashed splay..." << endl;
     file.open(filename);
     while (getline(file, line)) {
-
+        lineSize = line.size();
         // only passes in non-blank lines
-        if (line.size() > 0) {
+        if (lineSize > 0) {
             FilterLine(line);
         }
     }
@@ -113,10 +113,11 @@ int HashedSplays::GetIndex(string val) {
 // Name: FilterLine
 // Given a string, splits and filters a line from a .txt file
 void HashedSplays::FilterLine(string& line) {
+    int lineSize = line.size();
     // line must contain at least one character
-    if (line.size() != 0) {
+    if (lineSize != 0) {
         char* currChar = &line[0]; string word = "";
-        int maxVal = line.size();
+        int maxVal = lineSize;
 
         while (currChar != &line[maxVal]) {
             // must be a valid char

@@ -70,7 +70,7 @@ int main(int argc, char* argv[]) {
 
 	// Test 3: testing hash table  
 	try {
-		const string STOP_DELIM = "!";
+	        const string STOP_DELIM = "!"; const char NEGATIVE = '-';
 		int indexNum = 0, digitCount = 0, wordCount = 0, findAllCount = 0, responceNum; 
 		bool currisDigit = true, currisWord = true; 
 		vector<int> digitList; vector<string> wordList, findAllList;
@@ -96,7 +96,8 @@ int main(int argc, char* argv[]) {
 			if (usrResponce != STOP_DELIM) { 
 				int responceSize = usrResponce.size();
 				for (int i = 0; i < responceSize; i++) {
-					if (isdigit(usrResponce[i])) { currisDigit = true; }
+				  // stopped here
+				  if ((isdigit(usrResponce[i])) || (usrResponce[i] == NEGATIVE)) { currisDigit = true; }
 					else { currisWord = true; }
 
 					// word cannot contain both ints and chars
@@ -162,7 +163,7 @@ int main(int argc, char* argv[]) {
 		for (int i = 0; i < findAllCount; i++) {
 			wordFreq.FindAll(findAllList.at(i));
 		}
-		cout << "\nEnd of test 3" << endl;
+		cout << "End of test 3" << endl;
 	}
 
 	catch (Exceptions& cException) {
@@ -174,6 +175,8 @@ int main(int argc, char* argv[]) {
 	usrResponce.clear();
 	while (usrResponce != YES && usrResponce != NO) {
 		cout << "Would you like to delete the two export files ('Y' or 'N' ): "; cin >> usrResponce;
+		cin.clear(); cin.ignore(10000, '\n');
+		
 		if (islower(usrResponce[0])) { usrResponce[0] = toupper(usrResponce[0]); }
 	}
 	if (usrResponce == YES) { 

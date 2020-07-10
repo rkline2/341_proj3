@@ -73,7 +73,7 @@ int main(int argc, char* argv[]) {
 	// Test 3: testing hash table  
 	try {
 		const string STOP_DELIM = "!";
-		int indexNum = 0, digitCount = 0, wordCount = 0, findAllCount = 0; 
+		int indexNum = 0, digitCount = 0, wordCount = 0, findAllCount = 0, responceNum; 
 		bool currisDigit = true, currisWord = true; 
 		vector<int> digitList; vector<string> wordList, findAllList;
 		
@@ -81,11 +81,12 @@ int main(int argc, char* argv[]) {
 		cout << "\nTest 3: Testing hash table length using any .txt file (display only)" << endl;
 		while (usrResponce == EMPTY_STR) {
 			cout << "How long do you want the hash table: "; cin >> usrResponce; cin.clear(); cin.ignore(10000, '\n');
-			for (int i = 0; i < usrResponce.length(); i++) {
+			responceNum = usrResponce.length();
+			for (int i = 0; i < responceNum; i++) {
 				if (!isdigit(usrResponce[i])) { usrResponce.clear(); break; }
 			}
 		}
-		stoi(usrResponce) >> indexNum; usrResponce.clear();
+		indexNum = stoi(usrResponce); usrResponce.clear();
 
 		while (usrResponce != STOP_DELIM) {
 			currisDigit = false, currisWord = false;

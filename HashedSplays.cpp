@@ -77,7 +77,7 @@ void HashedSplays::PrintTree(int indexNum) {
 // the hash table in ascending order 
 void HashedSplays::PrintHashCountResults() {
     for (int i = 0; i < m_trees; i++) {
-        table.at(i).PrintResults();
+        table.at(i).PrintRoot();
     }
 }
 

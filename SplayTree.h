@@ -172,6 +172,7 @@ public:
         newNode = NULL;   // So next insert will call new
     }
 
+   
     void remove(const Comparable& x)
     {
         BinaryNode* newTree;
@@ -205,19 +206,44 @@ public:
 
         return *this;
     }
-    /*****************************************EXTRA FUMCTIONS*****************************************/
+    /*****************************************EXTRA FUNCTIONS*****************************************/
     void IncrementFreq(const Comparable& x) {
         // Desired node will always be at the root of the tree 
         root->element.IncrementFrequency();
         nullNode->element.IncrementFrequency();
     }
 
-    void PrintResults() {
+    /**************************BACKUPS*************************
+    void PrintRoot() {
         if (m_numNodes != 0) {
             cout << "This tree starts with Node [word=" << root->element.GetWord()
                 << ", frequency=" << root->element.GetFrequency() << "] and has " << m_numNodes << " nodes" << endl;
         }
         else { cout << "This tree has no Nodes" << endl; }
+    }
+
+      void ExportRoot(ofstream& file) {
+        if (m_numNodes != 0) {
+        file << "This tree starts with Node [word=" << root->element.GetWord()
+            << ", frequency=" << root->element.GetFrequency() << "] and has " << m_numNodes << " nodes" << endl;
+        }
+        else { file << "This tree has no Nodes" << endl; }
+
+    }
+    **************************BACKUPS**************************/
+
+    void PrintRoot() const {
+        if (m_numNodes != 0) {
+            cout << PrintRoot(root) << endl;
+        }
+        else { cout << "This tree has no Nodes" << endl; }
+    }
+
+    void ExportRoot(ofstream& file) {
+        if (m_numNodes != 0) {
+            file << ExportRoot(root) << endl;
+        }
+        else { file << "This tree has no Nodes" << endl; }
     }
 
     void FindAll(string val) {
@@ -231,16 +257,7 @@ public:
     int GetNumNodes() { return m_numNodes; }
 
     int GetSplayCount() { return m_splayCount; }
-
-    void ExportResults(ofstream& file) {
-        if (m_numNodes != 0) {
-        file << "This tree starts with Node [word=" << root->element.GetWord()
-            << ", frequency=" << root->element.GetFrequency() << "] and has " << m_numNodes << " nodes" << endl;
-        }
-        else { file << "This tree has no Nodes" << endl; }
-
-    }
-
+   
     void ExportTree(ofstream& file) {
         if (isEmpty()) {
             file << "Empty tree" << endl;
@@ -249,7 +266,7 @@ public:
             ExportTree(root, file);
         }
     }
-    /*****************************************EXTRA FUMCTIONS*****************************************/
+    /*****************************************EXTRA FUNCTIONS*****************************************/
 
 
 private:
@@ -297,7 +314,7 @@ private:
         }
     }
 
-    /************************EXTRA FUNCTION****************************/
+    /************************EXTRA FUNCTIONS****************************/
 
     void ExportTree(BinaryNode* t, ofstream& file) const {
         
@@ -308,7 +325,15 @@ private:
         }
     }
 
-    /************************EXTRA FUNCTION****************************/
+    Comparable& PrintRoot(BinaryNode*t) const {
+        return t->element;
+    }
+
+    Comparable& ExportRoot(BinaryNode* t) const {
+        return t->element;
+    }
+
+    /************************EXTRA FUNCTIONS****************************/
 
 
     /**

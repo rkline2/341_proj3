@@ -66,7 +66,7 @@ public:
 	void ExportHashCountResults() {
 		const int MAX_SIZE = m_ExportTable->size();
 		for (int i = 0; i < MAX_SIZE; i++) {
-			m_ExportTable->at(i).ExportResults(m_file);
+			m_ExportTable->at(i).ExportRoot(m_file);
 		}
 	}
 

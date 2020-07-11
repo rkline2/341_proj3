@@ -234,7 +234,7 @@ public:
 
     void PrintRoot() const {
         if (m_numNodes != 0) {
-            cout << "This tree starts with Node " << PrintRoot(root) <<
+            cout << "This tree starts with " << PrintRoot(root) <<
                 " and has " << m_numNodes << " nodes" << endl;
         }
         else { cout << "This tree has no Nodes" << endl; }
@@ -242,7 +242,7 @@ public:
 
     void ExportRoot(ofstream& file) {
         if (m_numNodes != 0) {
-            file << "This tree starts with Node " << ExportRoot(root) <<
+            file << "This tree starts with " << ExportRoot(root) <<
                 " and has " << m_numNodes << " nodes" << endl;
         }
         else { file << "This tree has no Nodes" << endl; }

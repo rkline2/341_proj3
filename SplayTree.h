@@ -133,44 +133,14 @@ public:
         }
     }
 
-    void insert(const Comparable& x)
-    {
-        static BinaryNode* newNode = NULL;
-
-        if (newNode == NULL) {
-            newNode = new BinaryNode;
-            SetNumNodes(++m_numNodes);
+    void insert(Comparable& x){
+        if (!contains(x)) { 
+            insert((const Comparable) x);
         }
-        newNode->element = x;
-
-        if (root == nullNode)
-        {
-            newNode->left = newNode->right = nullNode;
-            root = newNode;
-        }
-        else
-        {
-            splay(x, root);
-            if (x < root->element)
-            {
-                newNode->left = root->left;
-                newNode->right = root;
-                root->left = nullNode;
-                root = newNode;
-            }
-            else
-                if (root->element < x)
-                {
-                    newNode->right = root->right;
-                    newNode->left = root;
-                    root->right = nullNode;
-                    root = newNode;
-                }
-                else
-                    return;
-        }
-        newNode = NULL;   // So next insert will call new
+        else { IncrementFreq(); }
     }
+    
+    
 
    
     void remove(const Comparable& x)
@@ -207,7 +177,7 @@ public:
         return *this;
     }
     /*****************************************EXTRA FUNCTIONS*****************************************/
-    void IncrementFreq(const Comparable& x) {
+    void IncrementFreq() {
         // Desired node will always be at the root of the tree 
         root->element.IncrementFrequency();
         nullNode->element.IncrementFrequency();
@@ -366,6 +336,46 @@ private:
         k2->left = k1;
         k1 = k2;
     }
+
+    void insert(const Comparable& x)
+    {
+        static BinaryNode* newNode = NULL;
+
+        if (newNode == NULL) {
+            newNode = new BinaryNode;
+            SetNumNodes(++m_numNodes);
+        }
+        newNode->element = x;
+
+        if (root == nullNode)
+        {
+            newNode->left = newNode->right = nullNode;
+            root = newNode;
+        }
+        else
+        {
+            splay(x, root);
+            if (x < root->element)
+            {
+                newNode->left = root->left;
+                newNode->right = root;
+                root->left = nullNode;
+                root = newNode;
+            }
+            else
+                if (root->element < x)
+                {
+                    newNode->right = root->right;
+                    newNode->left = root;
+                    root->right = nullNode;
+                    root = newNode;
+                }
+                else
+                    return;
+        }
+        newNode = NULL;   // So next insert will call new
+    }
+    
 
     /**
      * Internal method to perform a top-down splay.

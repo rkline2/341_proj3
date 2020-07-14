@@ -142,8 +142,8 @@ void HashedSplays::FilterLine(string& line) {
                 if (isalpha(*currChar) || *currChar == DASH || *currChar == APOST) { word.push_back(*currChar); }
                 
                 // word is created
-                else if ( ((*currChar < MAX_ESCAPE_SEQ) || (*currChar == DEL_ESCAPE_SEQ))
-                    && word != WORD_SP && word != EMPTY_STR) {
+                else if ( ((*currChar < MAX_ESCAPE_SEQ) || (*currChar == DEL_ESCAPE_SEQ)) && 
+                    word != WORD_SP && word != EMPTY_STR ) {
                     InsertWord(word);
                 }
             }
@@ -185,15 +185,7 @@ void HashedSplays::InsertWord(string& word) {
         // determines if tableIndex is valid or not 
         if (tableIndex != INVALID_INDEX) {
             Node temp(word, 1);
-
-            // current word is not found in the splay tree 
-            if (!table.at(tableIndex).contains(temp)) {
-                table.at(tableIndex).insert(temp);
-            }
-
-            // current word is found in the splay tree
-            else { table.at(tableIndex).IncrementFreq(temp); }
-        
+            table.at(tableIndex).insert(temp);
         }
     }
     word.clear();

@@ -14,26 +14,30 @@
 
 
 int main(int argc, char* argv[]) {
-	const string YES = "Y", NO = "N", OUTPUT1 = "MyOutput1.txt", OUTPUT2 = "MyOutput2.txt";
+	const string YES = "Y", NO = "N", MY_OUTPUT_1 = "MyOutput1.txt", MY_OUTPUT_2 = "MyOutput2.txt", 
+		DEFAULT_INPUT1 = "input1.txt", DEFAULT_INPUT2 = "input2.txt", SOURCE_OUTPUT_1 = "output1.txt",
+		SOURCE_OUTPUT_2 = "output2.txt";
+
 	string usrResponce;
+
 	cout << "*********Welcome to TestDriver.cpp*********" << endl;
 	// Test 1: testing given input1.txt
 	try {
 		cout << "Test 1: Testing input1.txt" << endl;
-		cout << "Will export results to "<< OUTPUT1 << endl;
+		cout << "Will export results to "<< MY_OUTPUT_1 << endl;
 		cout << "Enter any value to continue: "; cin >> usrResponce; cin.clear(); cin.ignore(10000, '\n');
 
 		HashedSplays wordFrequency1(ALPHABET_SIZE);
-		wordFrequency1.FileReader("input1.txt");
+		wordFrequency1.FileReader(DEFAULT_INPUT1);
 
-		Export export1(OUTPUT1, wordFrequency1);
+		Export export1(MY_OUTPUT_1, wordFrequency1);
 
 		export1.ExportHashCountResults();
 		export1.ExportTree(19);
 		export1.ExportTree("F");
 		export1.ExportTree("K");
 		export1.ExportAll("The");
-		export1.CheckWork("output1.txt");
+		export1.CheckWork(SOURCE_OUTPUT_1);
 		
 	}
 
@@ -46,20 +50,25 @@ int main(int argc, char* argv[]) {
 	// Test 2: testing given input2.txt
 	try {
 		cout << "\nTest 2: Testing input2.txt" << endl;
-		cout << "Will export results to " << OUTPUT2 << endl;
+		cout << "Will export results to " << MY_OUTPUT_2 << endl;
+
+		cout << "\nATTENTION: Expect errors from lines 690-719.\n";
+		cout << "All of the node values and frequencies are the same for both .txt files.\n" <<
+			"The node's order is different for the two files.\n" << endl;
+
 		cout << "Enter any value to continue: "; cin >> usrResponce; cin.clear(); cin.ignore(10000, '\n');
 
 		HashedSplays wordFrequency2(ALPHABET_SIZE);
-		wordFrequency2.FileReader("input2.txt");
+		wordFrequency2.FileReader(DEFAULT_INPUT2);
 
-		Export export2("MyOutput2.txt", wordFrequency2);
+		Export export2(MY_OUTPUT_2, wordFrequency2);
 
 		export2.ExportHashCountResults();
 		export2.ExportTree(19);
 		export2.ExportTree("F");
 		export2.ExportTree("K");
 		export2.ExportAll("The");
-		export2.CheckWork("output2.txt");
+		export2.CheckWork(SOURCE_OUTPUT_2);
 	}
 
 	catch (Exceptions& cException) {
@@ -180,16 +189,16 @@ int main(int argc, char* argv[]) {
 		if (islower(usrResponce[0])) { usrResponce[0] = toupper(usrResponce[0]); }
 	}
 	if (usrResponce == YES) { 
-		ifstream file("MyOutput1.txt");
+		ifstream file(MY_OUTPUT_1);
 		if (file.good()) {
 			file.close();
-			remove("MyOutput1.txt");
+			remove(MY_OUTPUT_1.c_str());
 		}
 
-		file.open("MyOutput2.txt");
+		file.open(MY_OUTPUT_2);
 		if (file.good()) {
 			file.close();
-			remove("MyOutput2.txt");
+			remove(MY_OUTPUT_2.c_str());
 		}
 		cout << "All files removed" << endl;
 	}

@@ -52,10 +52,6 @@ int main(int argc, char* argv[]) {
 		cout << "\nTest 2: Testing input2.txt" << endl;
 		cout << "Will export results to " << MY_OUTPUT_2 << endl;
 
-		cout << "\nATTENTION: Expect errors from lines 690-719.\n";
-		cout << "All of the node values and frequencies are the same for both .txt files.\n" <<
-			"The node's order is different for the two files.\n" << endl;
-
 		cout << "Enter any value to continue: "; cin >> usrResponce; cin.clear(); cin.ignore(10000, '\n');
 
 		HashedSplays wordFrequency2(ALPHABET_SIZE);

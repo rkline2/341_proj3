@@ -86,7 +86,7 @@ int main(int argc, char* argv[]) {
 			cout << "How long do you want the hash table: "; cin >> usrResponce; cin.clear(); cin.ignore(10000, '\n');
 			responceNum = usrResponce.length();
 			for (int i = 0; i < responceNum; i++) {
-				if (!isdigit(usrResponce[i])) { usrResponce.clear(); break; }
+				if (!isdigit(usrResponce[i]) && usrResponce[i] != NEGATIVE) { usrResponce.clear(); break; }
 			}
 		}
 		istringstream(usrResponce) >> indexNum; usrResponce.clear();

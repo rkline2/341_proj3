@@ -163,9 +163,9 @@ public:
 	}
 
 private:
-	ofstream m_file;
-	vector<SplayTree<Node>>* m_ExportTable;
-	string m_fileName;
+  ofstream m_file; // Where all of the exported data will go
+  vector<SplayTree<Node>>* m_ExportTable; // Deep copy of table in HashedSplays.h
+  string m_fileName; // File name
 };
 
 #endif

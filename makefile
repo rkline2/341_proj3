@@ -1,33 +1,42 @@
 CXX = g++
-CXXFLAGS = -Wall
+CXXFLAGS = -ansi -Wall -g
+OBJS = driver.o Node.o HashedSplays.o Util.o
 
-compile: driver.out
+# Comment: This rule is optional
+compile: all
 
-driver.out: HashedSplays.o Node.o Util.o driver.o testdriver.o
-	$(CXX) $(CXXFLAGS) HashedSplays.o Node.o Util.o driver.o testdriver.o -o driver.out
+# Comment: This links all your object files and generates the executable.
+all: $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o driver.out
 
-HashedSplays.o: HashedSplays.h HashedSplays.cpp
-	$(CXX) $(CXXFLAGS) -c HashedSplays.cpp
+driver.o: driver.cpp 
+	$(CXX) $(CXXFLAGS) -c driver.cpp
 
 Node.o: Node.h Node.cpp
 	$(CXX) $(CXXFLAGS) -c Node.cpp
 
+HashedSplays.o: HashedSplays.h HashedSplays.cpp SplayTree.h Util.o Exceptions.h
+	$(CXX) $(CXXFLAGS) -c HashedSplays.cpp
+
 Util.o: Util.h Util.cpp
 	$(CXX) $(CXXFLAGS) -c Util.cpp
 
-driver.o: driver.cpp
-	$(CXX) $(CXXFLAGS) -c driver.cpp
-
-testdriver.o: testdriver.cpp
-	$(CXX) $(CXXFLAGS) -c testdriver.cpp
-
-clean:
-	rm -rf *.o
-	rm -f *.out
-	rm -f *~
-
+# Comment: to test with input1.txt, type 'make run DATA=input1.txt' at the command prompt.
 run:
 	./driver.out $(DATA)
 
+# Comment: an overly simplistic, but quick way to check overall runtime 
+runtime:
+	/usr/bin/time -p ./driver.out $(DATA)
+
 val:
-	valgrind --tool=memcheck --leak-check=full --show-reachable=yes ./driver.out $(DATA)
+	valgrind --leak-check=full ./driver.out $(DATA)
+
+val-verbose:
+	valgrind --leak-check=full --show-leak-kinds=all -v ./driver.out $(DATA)
+
+clean:
+	rm -rf *.o
+	rm -f driver.out
+	rm -f *~ *#
+	rm -f vgcor*

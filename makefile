@@ -1,10 +1,10 @@
 CXX = g++
 CXXFLAGS = -Wall
 
-compile: proj3
+compile: driver.out
 
-proj3: HashedSplays.o Node.o Util.o driver.o testdriver.o
-	$(CXX) $(CXXFLAGS) HashedSplays.o Node.o Util.o driver.o testdriver.o -o proj3
+driver.out: HashedSplays.o Node.o Util.o driver.o testdriver.o
+	$(CXX) $(CXXFLAGS) HashedSplays.o Node.o Util.o driver.o testdriver.o -o driver.out
 
 HashedSplays.o: HashedSplays.h HashedSplays.cpp
 	$(CXX) $(CXXFLAGS) -c HashedSplays.cpp
@@ -15,19 +15,19 @@ Node.o: Node.h Node.cpp
 Util.o: Util.h Util.cpp
 	$(CXX) $(CXXFLAGS) -c Util.cpp
 
-
 driver.o: driver.cpp
 	$(CXX) $(CXXFLAGS) -c driver.cpp
 
 testdriver.o: testdriver.cpp
 	$(CXX) $(CXXFLAGS) -c testdriver.cpp
 
-
 clean:
-	rm proj3 *o *~
+	rm -rf *.o
+	rm -f *.out
+	rm -f *~
 
 run:
-	./proj3 $(DATA)
+	./driver.out $(DATA)
 
 val:
-	valgrind --tool=memcheck --leak-check=full --show-reachable=yes ./proj3 $(DATA)
+	valgrind --tool=memcheck --leak-check=full --show-reachable=yes ./driver.out $(DATA)

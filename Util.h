@@ -22,12 +22,6 @@
 #include <fstream>
 #include "SplayTree.h"
 
-
-const string EMPTY_STR = "", WORD_SP = " ";												//<-|
-const char APOST = '\'', QUOTE = '"', DASH = '-', DELIM = ' ';							//  | Filtration conditions  
-const int ASCII_MIN_CHAR = -1, ASCII_MAX_CHAR = 255, MIN_UPPER = 65, MAX_UPPER = 90;	//  | and cases
-const int MAX_ESCAPE_SEQ = 33, DEL_ESCAPE_SEQ = 127;									//<-|
-
 class Util {
 
 public:

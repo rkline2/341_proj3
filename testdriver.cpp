@@ -1,5 +1,5 @@
 /**************************************************************
- * File:    TestDriver.cpp
+ * File:    testdriver.cpp
  * Project: CMSC 341 - Project 3 - Word Frequency
  * Author : Rooklyn Kline
  * Date   : 16-July-2020

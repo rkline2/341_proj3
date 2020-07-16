@@ -21,6 +21,16 @@
 #include "Util.h"
 #include "Exceptions.h"
 
+/*****************************Word Filtration Conditions and Cases*****************************/
+
+const string EMPTY_STR = "", WORD_SP = " ";
+const char APOST = '\'', QUOTE = '"', DASH = '-', DELIM = ' ';
+const int ASCII_MIN_CHAR = -1, ASCII_MAX_CHAR = 255, MIN_UPPER = 65, MAX_UPPER = 90;
+const int MAX_ESCAPE_SEQ = 33, DEL_ESCAPE_SEQ = 127;
+
+/*****************************Word Filtration Conditions and Cases*****************************/
+
+
 const int ALPHABET_SIZE = 26, INVALID_INDEX = -1; // Index values for table
 
 class HashedSplays{

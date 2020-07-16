@@ -3,8 +3,8 @@ CXXFLAGS = -Wall
 
 compile: proj3
 
-proj3: HashedSplays.o Node.o Util.o driver.o TestDriver.o
-	$(CXX) $(CXXFLAGS) HashedSplays.o Node.o Util.o driver.o TestDriver.o -o proj3
+proj3: HashedSplays.o Node.o Util.o driver.o testdriver.o
+	$(CXX) $(CXXFLAGS) HashedSplays.o Node.o Util.o driver.o testdriver.o -o proj3
 
 HashedSplays.o: HashedSplays.h HashedSplays.cpp
 	$(CXX) $(CXXFLAGS) -c HashedSplays.cpp
@@ -19,8 +19,8 @@ Util.o: Util.h Util.cpp
 driver.o: driver.cpp
 	$(CXX) $(CXXFLAGS) -c driver.cpp
 
-TestDriver.o: TestDriver.cpp
-	$(CXX) $(CXXFLAGS) -c TestDriver.cpp
+testdriver.o: testdriver.cpp
+	$(CXX) $(CXXFLAGS) -c testdriver.cpp
 
 
 clean:

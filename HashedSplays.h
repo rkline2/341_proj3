@@ -58,7 +58,7 @@ public:
 	// Description: Creates a deepcopy of table  
 	// Pre-Conditions: Passes in a valid vector pointer   
 	// Post-Conditions: Creates a deep copy of table 
-	void CpyTable(vector<SplayTree<Node>>*&);
+	void CpyTable(vector< SplayTree<Node> >*&);
 
 	// Name: GetNumTrees
 	// Description: Returns the maximum amount of trees in the splay table 
@@ -126,7 +126,7 @@ private:
 	// Post-Conditions: Inserts word into splay table
 	void InsertWord(string& word);
 
-	vector<SplayTree<Node>> table; // contains all of the splay trees
+	vector< SplayTree<Node> > table; // contains all of the splay trees
 	int m_trees; // maximum number of trees in the table   
 	
 };

@@ -20,8 +20,8 @@ HashedSplays::~HashedSplays() {
 
 // CpyTable
 // Given a hash splay, deep copies the given hash 
-void HashedSplays::CpyTable(vector<SplayTree<Node>>*& cpytable) {
-    cpytable = new vector<SplayTree<Node>>(table);
+void HashedSplays::CpyTable(vector< SplayTree<Node> >*& cpytable) {
+    cpytable = new vector< SplayTree<Node> >(table);
 }
 
 // GetNumTrees
@@ -38,7 +38,7 @@ void HashedSplays::FileReader(string filename) {
     if (m_trees == 0) { throw Exceptions("Table index out of bounds"); }
 
     cout << "Building hashed splay..." << endl;
-    file.open(filename);
+    file.open(filename.c_str());
     while (getline(file, line)) {
         lineSize = line.size();
         // only passes in non-blank lines
@@ -162,10 +162,10 @@ void HashedSplays::FilterLine(string& line) {
 // Given a string, inserts a word into the vector table 
 void HashedSplays::InsertWord(string& word) {
     int frontIndex = 0, nextIndex = 1, endIndex, tableIndex; 
-    char* frontVal = &word[frontIndex], * endVal = nullptr;
+    char* frontVal = &word[frontIndex], * endVal = NULL;
 
     // removes any unwanted puncts at the front the word
-    while (frontVal != nullptr && ispunct(*frontVal)) {
+    while (frontVal != NULL && ispunct(*frontVal)) {
         word.erase(frontIndex, nextIndex);
         frontVal = &word[frontIndex];
     }
@@ -174,7 +174,7 @@ void HashedSplays::InsertWord(string& word) {
         endIndex = word.length() - 1; endVal = &word[endIndex];
 
         // removes any unwanted punct at the end the word
-        while (endVal != nullptr && ispunct(*endVal)) {
+        while (endVal != NULL && ispunct(*endVal)) {
             word.erase(endIndex);
             endIndex = word.length() - 1; endVal = &word[endIndex];
         }

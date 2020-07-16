@@ -11,7 +11,7 @@
  *************************************************************/
 #include "HashedSplays.h"
 #include "Export.h"
-
+#include <sstream> // for converting to int only
 
 int main(int argc, char* argv[]) {
 	const string YES = "Y", NO = "N", MY_OUTPUT_1 = "MyOutput1.txt", MY_OUTPUT_2 = "MyOutput2.txt", 
@@ -89,7 +89,7 @@ int main(int argc, char* argv[]) {
 				if (!isdigit(usrResponce[i])) { usrResponce.clear(); break; }
 			}
 		}
-		indexNum = stoi(usrResponce); usrResponce.clear();
+		istringstream(usrResponce) >> indexNum; usrResponce.clear();
 
 		while (usrResponce != STOP_DELIM) {
 			currisDigit = false, currisWord = false;
@@ -110,7 +110,8 @@ int main(int argc, char* argv[]) {
 				}
 
 				if (currisDigit) {
-					digitList.push_back(stoi(usrResponce));
+				  istringstream(usrResponce) >> responceNum; 
+					digitList.push_back(responceNum);
 					digitCount++;
 				}
 				else if (currisWord) {
@@ -185,13 +186,13 @@ int main(int argc, char* argv[]) {
 		if (islower(usrResponce[0])) { usrResponce[0] = toupper(usrResponce[0]); }
 	}
 	if (usrResponce == YES) { 
-		ifstream file(MY_OUTPUT_1);
+	  ifstream file(MY_OUTPUT_1.c_str());
 		if (file.good()) {
 			file.close();
 			remove(MY_OUTPUT_1.c_str());
 		}
 
-		file.open(MY_OUTPUT_2);
+		file.open(MY_OUTPUT_2.c_str());
 		if (file.good()) {
 			file.close();
 			remove(MY_OUTPUT_2.c_str());

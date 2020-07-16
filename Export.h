@@ -32,7 +32,7 @@ public:
 	// Pre-Conditions: Given filename and splay are valid  
 	// Post-Conditions: Creates a new splay table and sets m_fileName 
 	Export(string filename, HashedSplays& splay) {
-		m_file.open(filename); const int SOURCE_NUM_TREES = splay.GetNumTrees();
+	  m_file.open(filename.c_str()); const int SOURCE_NUM_TREES = splay.GetNumTrees();
 		
 		// Given values must be valid
 		if (m_file.fail() || (SOURCE_NUM_TREES <= 0 || SOURCE_NUM_TREES > ALPHABET_SIZE) ) { 
@@ -56,7 +56,7 @@ public:
 		m_ExportTable->clear();
 
 		delete m_ExportTable;
-		m_ExportTable = nullptr;
+		m_ExportTable = NULL;
 	}
 
 	// Name: ExportHashCountResults
@@ -127,7 +127,7 @@ public:
 	// Post-Conditions: Checks if the programs output is the same as the given output
 	void CheckWork(string sourceFileName) {
 		m_file.close(); int lineNum = 1; bool isValid = true;
-		ifstream myFile(m_fileName), validFile(sourceFileName);
+		ifstream myFile(m_fileName.c_str()), validFile(sourceFileName.c_str());
 		string myOutput, sourceOutput;
 
 		cout << "Checking work..." << endl;
@@ -164,7 +164,7 @@ public:
 
 private:
   ofstream m_file; // Where all of the exported data will go
-  vector<SplayTree<Node>>* m_ExportTable; // Deep copy of table in HashedSplays.h
+  vector< SplayTree<Node> >* m_ExportTable; // Deep copy of table in HashedSplays.h
   string m_fileName; // File name
 };
 

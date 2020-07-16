@@ -79,7 +79,7 @@ public:
 
 		if (indexNum != INVALID_INDEX) {
 			m_ExportTable->at(indexNum).ExportTree(m_file);
-			m_file << "This tree has " << m_ExportTable->at(indexNum).GetSplayCount() << " splays" << endl;
+			m_file << "This tree has had " << m_ExportTable->at(indexNum).GetSplayCount() << " splays." << endl;
 		}
 		else {
 			cout << "-----Invalid Argument for ExportTree-----" << endl;
@@ -95,7 +95,7 @@ public:
 		int tableSize = m_ExportTable->size();
 		if (indexNum >= 0 && indexNum <= tableSize) {
 			m_ExportTable->at(indexNum).ExportTree(m_file);
-			m_file << "This tree has " << m_ExportTable->at(indexNum).GetSplayCount() << " splays" << endl;
+			m_file << "This tree has had " << m_ExportTable->at(indexNum).GetSplayCount() << " splays." << endl;
 		}
 		else { 
 			cout << "-----Invalid Argument for ExportTree-----" << endl;

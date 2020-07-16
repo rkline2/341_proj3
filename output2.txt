@@ -1,30 +1,30 @@
 Building hashed splay...
-This tree starts with Node [word=a, frequency=353] and has 273 nodes
-This tree starts with Node [word=borne, frequency=3] and has 324 nodes
-This tree starts with Node [word=calls, frequency=5] and has 366 nodes
-This tree starts with Node [word=dead, frequency=16] and has 284 nodes
-This tree starts with Node [word=Exeunt, frequency=33] and has 133 nodes
-This tree starts with Node [word=feel, frequency=10] and has 287 nodes
-This tree starts with Node [word=go, frequency=41] and has 139 nodes
-This tree starts with Node [word=hath, frequency=52] and has 240 nodes
-This tree starts with Node [word=I, frequency=618] and has 117 nodes
-This tree starts with Node [word=journey, frequency=1] and has 29 nodes
-This tree starts with Node [word=KENT, frequency=154] and has 56 nodes
-This tree starts with Node [word=long, frequency=12] and has 191 nodes
-This tree starts with Node [word=march, frequency=2] and has 242 nodes
-This tree starts with Node [word=nor, frequency=28] and has 105 nodes
-This tree starts with Node [word=oldest, frequency=1] and has 135 nodes
-This tree starts with Node [word=present, frequency=5] and has 312 nodes
-This tree starts with Node [word=quickly, frequency=3] and has 20 nodes
-This tree starts with Node [word=realm, frequency=2] and has 210 nodes
-This tree starts with Node [word=so, frequency=113] and has 569 nodes
-This tree starts with Node [word=that, frequency=249] and has 315 nodes
-This tree starts with Node [word=usurp'd, frequency=1] and has 87 nodes
-This tree starts with Node [word=Vex, frequency=1] and has 68 nodes
-This tree starts with Node [word=with, frequency=175] and has 267 nodes
-This tree has no Nodes
-This tree starts with Node [word=young, frequency=10] and has 32 nodes
-This tree starts with Node [word=zir, frequency=2] and has 4 nodes
+This tree starts with Node [word=a, frequency=353] and has 273 nodes.
+This tree starts with Node [word=borne, frequency=3] and has 324 nodes.
+This tree starts with Node [word=calls, frequency=5] and has 366 nodes.
+This tree starts with Node [word=dead, frequency=16] and has 284 nodes.
+This tree starts with Node [word=Exeunt, frequency=33] and has 133 nodes.
+This tree starts with Node [word=feel, frequency=10] and has 287 nodes.
+This tree starts with Node [word=go, frequency=41] and has 139 nodes.
+This tree starts with Node [word=hath, frequency=52] and has 240 nodes.
+This tree starts with Node [word=I, frequency=618] and has 117 nodes.
+This tree starts with Node [word=journey, frequency=1] and has 29 nodes.
+This tree starts with Node [word=KENT, frequency=154] and has 56 nodes.
+This tree starts with Node [word=long, frequency=12] and has 191 nodes.
+This tree starts with Node [word=march, frequency=2] and has 242 nodes.
+This tree starts with Node [word=nor, frequency=28] and has 105 nodes.
+This tree starts with Node [word=oldest, frequency=1] and has 135 nodes.
+This tree starts with Node [word=present, frequency=5] and has 312 nodes.
+This tree starts with Node [word=quickly, frequency=3] and has 20 nodes.
+This tree starts with Node [word=realm, frequency=2] and has 210 nodes.
+This tree starts with Node [word=so, frequency=113] and has 569 nodes.
+This tree starts with Node [word=that, frequency=249] and has 315 nodes.
+This tree starts with Node [word=usurp'd, frequency=1] and has 87 nodes.
+This tree starts with Node [word=Vex, frequency=1] and has 68 nodes.
+This tree starts with Node [word=with, frequency=175] and has 267 nodes.
+This tree starts has no nodes.
+This tree starts with Node [word=young, frequency=10] and has 32 nodes.
+This tree starts with Node [word=zir, frequency=2] and has 4 nodes.
 Node [word=Take, frequency=12]
 Node [word=Takes, frequency=1]
 Node [word=Talk, frequency=1]
@@ -340,7 +340,7 @@ Node [word=twould, frequency=2]
 Node [word=tyrannous, frequency=1]
 Node [word=tyranny, frequency=2]
 Node [word=tyrant's, frequency=1]
-This tree has 4285 splays
+This tree has had 4285 splays.
 Node [word=FRANCE, frequency=9]
 Node [word=Fair, frequency=1]
 Node [word=Fairest, frequency=1]
@@ -628,7 +628,7 @@ Node [word=furrow-weeds, frequency=1]
 Node [word=further, frequency=11]
 Node [word=fury, frequency=2]
 Node [word=future, frequency=1]
-This tree has 1490 splays
+This tree has had 1490 splays.
 Node [word=KENT, frequency=154]
 Node [word=KING, frequency=214]
 Node [word=Keep, frequency=3]
@@ -685,7 +685,7 @@ Node [word=knowest, frequency=2]
 Node [word=knowledge, frequency=4]
 Node [word=known, frequency=11]
 Node [word=knows, frequency=4]
-This tree has 750 splays
+This tree has had 750 splays.
 Printing the results of nodes that start with 'The'
 Node [word=The, frequency=124]
 Node [word=Theban, frequency=1]

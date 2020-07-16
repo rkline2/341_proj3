@@ -56,7 +56,7 @@ void HashedSplays::PrintTree(string indexVal) {
     int indexNum = GetIndex(indexVal);
     if (indexNum != INVALID_INDEX) { 
         table.at(indexNum).printTree();
-        cout << "This tree has " << table.at(indexNum).GetSplayCount() << " splays" << endl;
+        cout << "This tree has had " << table.at(indexNum).GetSplayCount() << " splays." << endl;
     }
     else { cout << "Entered index is not valid for PrintTree" << endl; }
 }
@@ -67,7 +67,7 @@ void HashedSplays::PrintTree(string indexVal) {
 void HashedSplays::PrintTree(int indexNum) {
     if (indexNum >= 0 && indexNum < m_trees) { 
         table.at(indexNum).printTree(); 
-        cout << "This tree has " << table.at(indexNum).GetSplayCount() << " splays" << endl;
+        cout << "This tree has had " << table.at(indexNum).GetSplayCount() << " splays." << endl;
     }
     else { cout << "Entered index is not valid for PrintTree" << endl; }
 }

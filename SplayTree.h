@@ -203,19 +203,21 @@ public:
     **************************BACKUPS**************************/
 
     void PrintRoot() const {
+        cout << "This tree starts ";
         if (m_numNodes != 0) {
-            cout << "This tree starts with " << PrintRoot(root) <<
-                " and has " << m_numNodes << " nodes" << endl;
+            cout << "with " << PrintRoot(root) <<
+                " and has " << m_numNodes << " nodes." << endl;
         }
-        else { cout << "This tree has no Nodes" << endl; }
+        else { cout << "has no nodes." << endl; }
     }
 
     void ExportRoot(ofstream& file) {
+        file << "This tree starts ";
         if (m_numNodes != 0) {
-            file << "This tree starts with " << ExportRoot(root) <<
-                " and has " << m_numNodes << " nodes" << endl;
+            file << "with " << ExportRoot(root) <<
+                " and has " << m_numNodes << " nodes." << endl;
         }
-        else { file << "This tree has no Nodes" << endl; }
+        else { file << "has no nodes." << endl; }
     }
 
     void FindAll(string val) {

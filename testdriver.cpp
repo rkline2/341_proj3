@@ -20,7 +20,7 @@ int main(int argc, char* argv[]) {
 
 	string usrResponce;
 
-	cout << "*********Welcome to TestDriver.cpp*********" << endl;
+	cout << "*********Welcome to testdriver.cpp*********" << endl;
 	// Test 1: testing given input1.txt
 	try {
 		cout << "Test 1: Testing input1.txt" << endl;

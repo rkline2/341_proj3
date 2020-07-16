@@ -177,6 +177,12 @@ public:
         return *this;
     }
     /*****************************************EXTRA FUNCTIONS*****************************************/
+
+    // Name: IncrementFreq
+    // Description: Increments the number of 
+    // occurences the node has been found  
+    // Pre-Conditions: Node exists  
+    // Post-Conditions: Increments m_frequency by 1 
     void IncrementFreq() {
         // Desired node will always be at the root of the tree 
         root->element.IncrementFrequency();
@@ -202,6 +208,10 @@ public:
     }
     **************************BACKUPS**************************/
 
+    // Name: PrintRoot
+    // Description: Displays the root of the current splay tree 
+    // Pre-Conditions: Table exists
+    // Post-Conditions: Displays the current splay tree's root 
     void PrintRoot() const {
         cout << "This tree starts ";
         if (m_numNodes != 0) {
@@ -211,6 +221,10 @@ public:
         else { cout << "has no nodes." << endl; }
     }
 
+    // Name: ExportRoot
+    // Description: Exports the root of the current splay tree to a .txt file
+    // Pre-Conditions: Table exists and file is valid
+    // Post-Conditions: Exports the current splay tree's root
     void ExportRoot(ofstream& file) {
         file << "This tree starts ";
         if (m_numNodes != 0) {
@@ -220,18 +234,40 @@ public:
         else { file << "has no nodes." << endl; }
     }
 
+    // Name: FindAll
+    // Description: Given a word, finds words in current
+    // splay tree that start with the given word 
+    // Pre-Conditions: Table exists
+    // Post-Conditions: Displays words that start with the given word 
     void FindAll(string val) {
         FindAll(root, val);
     }
 
+    // Name: ExportAll
+    // Description: Given a word, exports words in current
+    // splay tree that start with the given word in a .txt file
+    // Pre-Conditions: Table exists and file is valid
+    // Post-Conditions: Exports words that start with the given word 
     void ExportAll(string val, ofstream& file) {
         ExportAll(root, val, file);
     }
 
+    // Name: GetNumNodes
+    // Description: Returns the number of nodes in the current splay tree
+    // Pre-Conditions: Table exists
+    // Post-Conditions: Returns the m_numNodes
     int GetNumNodes() { return m_numNodes; }
 
+    // Name: GetSplayCount
+    // Description: Returns the number of splays in the current splay tree
+    // Pre-Conditions: Table exists
+    // Post-Conditions: Returns the m_splayCount
     int GetSplayCount() { return m_splayCount; }
    
+    // Name: ExportTree
+    // Description: Exports the entire splay tree to a given .txt file
+    // Pre-Conditions: Table exists and file is valid
+    // Post-Conditions: Exports splay tree to a .txt file 
     void ExportTree(ofstream& file) {
         if (isEmpty()) {
             file << "Empty tree" << endl;
@@ -290,6 +326,7 @@ private:
 
     /************************EXTRA FUNCTIONS****************************/
 
+    // Internal method to export entire tree
     void ExportTree(BinaryNode* t, ofstream& file) const {
         
         if (t != t->left) {
@@ -299,10 +336,12 @@ private:
         }
     }
 
+    // Internal method to print root
     Comparable& PrintRoot(BinaryNode*t) const {
         return t->element;
     }
 
+    // Internal method to export root
     Comparable& ExportRoot(BinaryNode* t) const {
         return t->element;
     }
@@ -431,18 +470,8 @@ private:
     }
     /*************************EXTRA FUNCTIONS******************************/
     
-    void SetNumNodes(int num) {
-        if (num >= 0) {
-            m_numNodes = num;
-        }
-    }
-
-
-    void SetSplayCount(int num){
-        if (num >= 0) {
-            m_splayCount = num;
-        }
-    }
+    // Internal method for finding and 
+    // displaying words that start with the given string vlaue
     void FindAll(BinaryNode*& t, string val) {
         if (t != t->left) {
             FindAll(t->left, val);
@@ -453,6 +482,8 @@ private:
         }
     }
 
+    // Internal method for finding and 
+    // exporting words that start with the given string vlaue
     void ExportAll(BinaryNode*& t, string val, ofstream& file) {
         if (t != t->left) {
             ExportAll(t->left, val, file);
@@ -464,6 +495,34 @@ private:
     
     }
 
+    // Name: SetNumNodes
+    // Description: Sets the total number of nodes 
+    // in the current splay tree
+    // Pre-Conditions: m_numNodes exists and given int is a positive integer
+    // Post-Conditions: Sets m_numNodes
+    void SetNumNodes(int num) {
+        if (num >= 0) {
+            m_numNodes = num;
+        }
+    }
+
+    // Name: SetSplayCount
+    // Description: Sets the total number of splays 
+    // in the current splay tree
+    // Pre-Conditions: m_splayCount exists and given int is a positive integer
+    // Post-Conditions: Sets m_splayCount
+    void SetSplayCount(int num) {
+        if (num >= 0) {
+            m_splayCount = num;
+        }
+    }
+
+    // Name: IsSimilar
+    // Description: Given the current node and any string value, 
+    // returns true if the node's word starts with the given string 
+    // Pre-Conditions: Node and string vlaue are valid
+    // Post-Conditions: Returns true if node's word starts
+    // with the given string value  
     bool IsSimilar(BinaryNode*& t, string val) {
         string wordcpy = t->element.GetWord(); 
         const int VAL_SIZE = val.size(), WORD_SIZE = wordcpy.size();

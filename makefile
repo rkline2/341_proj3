@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -ansi -Wall -g
-OBJS = driver.o Node.o HashedSplays.o Util.o
+OBJS = driver.o testdriver.o Node.o HashedSplays.o Util.o
 
 # Comment: This rule is optional
 compile: all
@@ -11,6 +11,9 @@ all: $(OBJS)
 
 driver.o: driver.cpp 
 	$(CXX) $(CXXFLAGS) -c driver.cpp
+
+testdriver.o: testdriver.cpp
+	$(CXX) $(CXXFLAGS) -c testdriver.cpp
 
 Node.o: Node.h Node.cpp
 	$(CXX) $(CXXFLAGS) -c Node.cpp

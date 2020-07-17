@@ -11,7 +11,7 @@
  *************************************************************/
 #include "HashedSplays.h"
 #include "Export.h"
-#include <sstream> // for converting to int only
+#include <sstream> // for converting string to int only
 
 int main(int argc, char* argv[]) {
 	const string YES = "Y", NO = "N", MY_OUTPUT_1 = "MyOutput1.txt", MY_OUTPUT_2 = "MyOutput2.txt", 

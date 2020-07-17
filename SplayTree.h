@@ -140,9 +140,6 @@ public:
         else { IncrementFreq(); }
     }
     
-    
-
-   
     void remove(const Comparable& x)
     {
         BinaryNode* newTree;

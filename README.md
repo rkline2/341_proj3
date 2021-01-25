@@ -39,7 +39,7 @@ This tree starts has no nodes<br>
 This tree starts with Node [word=list, frequency=5] and has 12 nodes<br>
 
 ## FindAll/Partial Application
-After the tree has been filled with data, this application, much like texting will find words within a certain tree index. Using the tree pictured above, using “th” would give the results “the”, “this” and “than” in infix order. The output of this function should look like below:
+After the tree has been filled with data, this application, much like texting will find words within a certain tree index. Using “th” would give the results “the”, “this” and “than” in infix order. The output of this function should look like below:
 
 Printing the results of nodes that start with 'the'<br>
 Node [word=the, frequency=49]<br>

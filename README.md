@@ -25,15 +25,15 @@ This will be used as a grading test. Using the entire array “table” and name
 print the root value (to the screen) at each index in order and display how many nodes each tree contains. 
 The results will look like below:
 
-This tree starts with Node [word=a, frequency=7] and has 22 nodes  
-This tree starts with Node [word=be, frequency=7] and has 12 nodes
-This tree starts with Node [word=Contributors, frequency=2] and has 18 nodes
-This tree starts with Node [word=Donate, frequency=1] and has 16 nodes
-This tree starts with Node [word=eliminate, frequency=1] and has 8 nodes
-This tree starts with Node [word=following, frequency=1] and has 14 nodes
-This tree starts with Node [word=GPLv, frequency=1] and has 4 nodes
-This tree starts with Node [word=httpexamplecom, frequency=1] and has 11 nodes
-This tree starts with Node [word=is, frequency=19] and has 16 nodes
-This tree starts with Node [word=just, frequency=1] and has 3 nodes
-This tree starts has no nodes
-This tree starts with Node [word=list, frequency=5] and has 12 nodes
+This tree starts with Node [word=a, frequency=7] and has 22 nodes<br>
+This tree starts with Node [word=be, frequency=7] and has 12 nodes<br>
+This tree starts with Node [word=Contributors, frequency=2] and has 18 nodes<br>
+This tree starts with Node [word=Donate, frequency=1] and has 16 nodes<br>
+This tree starts with Node [word=eliminate, frequency=1] and has 8 nodes<br>
+This tree starts with Node [word=following, frequency=1] and has 14 nodes<br>
+This tree starts with Node [word=GPLv, frequency=1] and has 4 nodes<br>
+This tree starts with Node [word=httpexamplecom, frequency=1] and has 11 nodes<br>
+This tree starts with Node [word=is, frequency=19] and has 16 nodes<br>
+This tree starts with Node [word=just, frequency=1] and has 3 nodes<br>
+This tree starts has no nodes<br>
+This tree starts with Node [word=list, frequency=5] and has 12 nodes<br>

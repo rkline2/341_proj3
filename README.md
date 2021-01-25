@@ -25,7 +25,7 @@ This will be used as a grading test. Using the entire array “table” and name
 print the root value (to the screen) at each index in order and display how many nodes each tree contains. 
 The results will look like below:
 
-This tree starts with Node [word=a, frequency=7] and has 22 nodes
+This tree starts with Node [word=a, frequency=7] and has 22 nodes  
 This tree starts with Node [word=be, frequency=7] and has 12 nodes
 This tree starts with Node [word=Contributors, frequency=2] and has 18 nodes
 This tree starts with Node [word=Donate, frequency=1] and has 16 nodes
